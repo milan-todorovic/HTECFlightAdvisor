@@ -9,14 +9,14 @@ import java.util.List;
 /**
  * Provided exposure for data access to city data. More details in corresponding DAO object.
  */
-public class CityService implements ICityService{
+public class CityService implements ICityService {
 
     @Inject
     private ICityDao cityDao;
 
     @Override
-    public List<City> findAll() {
-        return cityDao.findAll();
+    public List<City> findAll(int numberOfComments) {
+        return cityDao.findAll(numberOfComments);
     }
 
     @Override
@@ -30,13 +30,13 @@ public class CityService implements ICityService{
     }
 
     @Override
-    public List<City> findByName(String name) {
-        return cityDao.findByName(name);
+    public List<City> findByName(String name, int numberOfComments) {
+        return cityDao.findByName(name, numberOfComments);
     }
 
     @Override
     public boolean update(City city, Long id) {
-        return cityDao.update(city,id);
+        return cityDao.update(city, id);
     }
 
     @Override

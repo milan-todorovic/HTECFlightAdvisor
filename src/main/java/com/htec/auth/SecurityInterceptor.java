@@ -2,6 +2,10 @@ package com.htec.auth;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -106,10 +110,35 @@ public class SecurityInterceptor implements javax.ws.rs.container.ContainerReque
         boolean isAllowed = false;
 
         User user = userDao.findRoleByUsername(username);
+        String saltedPassword = getSecurePassword(password,user.getSalt().getBytes(StandardCharsets.UTF_8));
 
-        if (rolesSet.contains(user.getRole()) && password.equals(user.getPassword()) && user.getRegistered() == 1) {
+        if (rolesSet.contains(user.getRole()) && saltedPassword.equals(user.getPassword()) && user.getRegistered() == 1) {
             isAllowed = true;
         }
         return isAllowed;
+    }
+
+    /**
+     * Generates salted password based on password and salt.
+     * @param password password for salt application
+     * @param salt random salt
+     * @return
+     */
+    public static String getSecurePassword(String password, byte[] salt) {
+
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(salt);
+            byte[] bytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return generatedPassword;
     }
 }

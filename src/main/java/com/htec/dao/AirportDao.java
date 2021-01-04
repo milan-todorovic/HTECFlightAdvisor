@@ -31,7 +31,7 @@ public class AirportDao implements IAirportDao{
     @Override
     public HashMap<String, Airport> findAll() {
 
-        List<City> cities = cityDao.findAll();
+        List<City> cities = cityDao.findAll(0);
 
         airportFile = new File(AirportDao.class.getClassLoader().getResource("airports.txt").getPath());
         try {

@@ -44,7 +44,7 @@ public class UserEndpoint {
      * @param id primary key/id of user to be matched by search
      * @return JSON representation of user that is found together with response status
      */
-    @RolesAllowed({"ADMIN","REGULAR"})
+    @RolesAllowed("ADMIN")
     @Path("/find-user/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)

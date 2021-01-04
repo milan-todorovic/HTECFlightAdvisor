@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface ICityDao {
 
-    public List<City> findAll();
+    public List<City> findAll(int numberOfComments);
 
     public boolean save(City city);
 
     public City find(Long id);
 
-    public List<City> findByName(String name);
+    public List<City> findByName(String name, int numberOfComments);
 
     public boolean update(City city, Long id);
 

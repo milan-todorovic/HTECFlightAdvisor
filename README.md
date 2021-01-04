@@ -19,10 +19,9 @@ Project was developed with intelij idea.
 This is a flight advisor implementation via REST API. Implementation is 
 provided with Rest Easy. 
 
+Note: Feature that provides return of city with corresponding comments will return
+all comments if value is set to 0. Otherwise, it will return specified number of comments.
+
 At preset moment there are some missing features:
 * feature that will enable an administrator to import airports and routes file. This
 is current done at request level.
-  
-* feature that will return only x specified comment is missing
-* authentication is based on a username and password at present moment. There is no 
-salt implementation.

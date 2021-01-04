@@ -7,8 +7,13 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,6 +21,10 @@ import java.util.logging.Logger;
  * Used to provide access to user data stored inside database.
  */
 public class UserDao implements IUserDao {
+
+    private static final Random RANDOM = new SecureRandom();
+    private static final int ITERATIONS = 10000;
+    private static final int KEY_LENGTH = 256;
 
     private Configuration configuration = Configuration.instance();
     Logger lgr = Logger.getLogger(UserDao.class.getName());
@@ -58,14 +67,17 @@ public class UserDao implements IUserDao {
         ds.setDriver(new org.h2.Driver());
         ds.setUrl(configuration.DB_URL);
 
-        String sql = "INSERT INTO USERS(FIRST_NAME, LAST_NAME, USERNAME, PASSWORD) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO USERS(FIRST_NAME, LAST_NAME, USERNAME, PASSWORD, SALT) VALUES (?, ?, ?, ?, ?)";
 
         boolean ret = true;
+
+        String salt = generateRandomSalt(10);
+        String saltedPassword = getSecurePassword(user.getPassword(), salt.getBytes(StandardCharsets.UTF_8));
 
         try {
             JdbcTemplate jtm = new JdbcTemplate(ds);
             jtm.update(sql, new Object[]{user.getFirstName(), user.getLastName(), user.getUsername(),
-                    user.getPassword()});
+                    saltedPassword, salt});
 
         } catch (DataAccessException dae) {
             lgr.log(Level.SEVERE, dae.getMessage(), dae);
@@ -145,12 +157,39 @@ public class UserDao implements IUserDao {
 
         boolean ret = true;
 
-        String sql = "UPDATE USERS SET FIRST_NAME=?, LAST_NAME=?, USERNAME=?, PASSWORD=? WHERE ID_USER=?";
+        String sql = "";
+
+        User dbUser = find(id);
+        User updatedUser;
+        String updatedSalt = generateRandomSalt(10);
+        boolean isPasswordChanged = false;
+
+        if(getSecurePassword(user.getPassword(),dbUser.getSalt().getBytes(StandardCharsets.UTF_8)).equals(dbUser.getPassword())){
+            updatedUser=user;
+            sql = "UPDATE USERS SET FIRST_NAME=?, LAST_NAME=?, USERNAME=? WHERE ID_USER=?";
+            isPasswordChanged = false;
+        }
+        else{
+            updatedUser = User.builder()
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .username(user.getUsername())
+                    .password(getSecurePassword(user.getPassword(),updatedSalt.getBytes(StandardCharsets.UTF_8)))
+                    .salt(updatedSalt).build();
+            sql = "UPDATE USERS SET FIRST_NAME=?, LAST_NAME=?, USERNAME=?, PASSWORD=?, SALT=? WHERE ID_USER=?";
+            isPasswordChanged = true;
+        }
 
         try {
             JdbcTemplate jtm = new JdbcTemplate(ds);
-            int rowsNo = jtm.update(sql, new Object[]{user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword()
-                    , id});
+            int rowsNo;
+            if(isPasswordChanged) {
+                rowsNo = jtm.update(sql, new Object[]{updatedUser.getFirstName(), updatedUser.getLastName(), updatedUser.getUsername(), updatedUser.getPassword(),
+                        updatedUser.getSalt(), id});
+            }
+            else{
+                rowsNo = jtm.update(sql, new Object[]{updatedUser.getFirstName(), updatedUser.getLastName(), updatedUser.getUsername(), id});
+            }
             if (rowsNo != 1) {
                 ret = false;
             }
@@ -250,5 +289,49 @@ public class UserDao implements IUserDao {
         }
 
         return ret;
+    }
+
+    /**
+     * Generates salted password based on password and salt.
+     * @param password password for salt application
+     * @param salt random salt
+     * @return
+     */
+    public static String getSecurePassword(String password, byte[] salt) {
+
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(salt);
+            byte[] bytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+    }
+
+    /**
+     * Generator for random <code>String</code> salt of configured length.
+     * @param length defined length of random salt
+     * @return randomly generated <code>String</code> salt
+     */
+    public static String generateRandomSalt(int length) {
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int c = RANDOM.nextInt(62);
+            if (c <= 9) {
+                sb.append(String.valueOf(c));
+            } else if (c < 36) {
+                sb.append((char) ('a' + c - 10));
+            } else {
+                sb.append((char) ('A' + c - 36));
+            }
+        }
+        return sb.toString();
     }
 }

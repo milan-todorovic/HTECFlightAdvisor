@@ -172,18 +172,18 @@
     <collation id="160" parent="2" name="UKRAINIAN_UKRAINE"/>
     <collation id="161" parent="2" name="VIETNAMESE"/>
     <collation id="162" parent="2" name="VIETNAMESE_VIETNAM"/>
-    <sequence id="163" parent="4" name="SYSTEM_SEQUENCE_3208DAE7_245D_4AFE_91E7_8384BDF7B2B8">
-      <ObjectId>10</ObjectId>
+    <sequence id="163" parent="4" name="SYSTEM_SEQUENCE_486F9905_E2BA_4E82_B4C9_E6819C15EBA6">
+      <ObjectId>14</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <AutoCreated>1</AutoCreated>
     </sequence>
-    <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_4572DDB3_1B9F_42E1_9668_195E14EDE493">
+    <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_76E87CE5_6B36_47E3_9DC8_EF1080C32897">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <AutoCreated>1</AutoCreated>
     </sequence>
-    <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_5276FEA7_A22A_4437_9261_573DE2E45B5C">
-      <ObjectId>14</ObjectId>
+    <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_F7281CB7_9BD7_4498_AD0F_94C4C1D11433">
+      <ObjectId>10</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <AutoCreated>1</AutoCreated>
     </sequence>
@@ -303,21 +303,26 @@
     </column>
     <column id="188" parent="168" name="PASSWORD">
       <Position>5</Position>
-      <DataType>VARCHAR(45)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="189" parent="168" name="ROLE">
+    <column id="189" parent="168" name="SALT">
       <Position>6</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="190" parent="168" name="ROLE">
+      <Position>7</Position>
       <DataType>VARCHAR(45)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;REGULAR&apos;</DefaultExpression>
     </column>
-    <column id="190" parent="168" name="REGISTERED">
-      <Position>7</Position>
+    <column id="191" parent="168" name="REGISTERED">
+      <Position>8</Position>
       <DataType>INT|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <index id="191" parent="168" name="PRIMARY_KEY_4">
+    <index id="192" parent="168" name="PRIMARY_KEY_4">
       <ObjectId>5</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>74</SourceTextLength>
@@ -325,7 +330,7 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <index id="192" parent="168" name="CONSTRAINT_INDEX_4">
+    <index id="193" parent="168" name="CONSTRAINT_INDEX_4">
       <ObjectId>7</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>81</SourceTextLength>
@@ -333,12 +338,12 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="193" parent="168" name="CONSTRAINT_4">
+    <key id="194" parent="168" name="CONSTRAINT_4">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID_USER</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="194" parent="168" name="CONSTRAINT_4D">
+    <key id="195" parent="168" name="CONSTRAINT_4D">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME</ColNames>
     </key>

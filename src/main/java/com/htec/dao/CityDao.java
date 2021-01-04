@@ -29,10 +29,12 @@ public class CityDao implements ICityDao {
 
     /**
      * Provides view of all cities inside database.
+     *
+     * @param numberOfComments number of comments to return. If 0 all comments are returned.
      * @return list of cities that are present inside database
      */
     @Override
-    public List<City> findAll() {
+    public List<City> findAll(int numberOfComments) {
 
         SimpleDriverDataSource ds = new SimpleDriverDataSource();
         ds.setDriver(new org.h2.Driver());
@@ -63,8 +65,15 @@ public class CityDao implements ICityDao {
                                     commentIdx = 0;
                                     workingCities.add(currentCity);
                                 }
+                                if(numberOfComments>0) {
+                                    if (commentIdx < numberOfComments) {
+                                        currentCity.getComments().add(commentMapper.mapRow(rs, commentIdx++));
+                                    }
+                                }
+                                else{
+                                    currentCity.getComments().add(commentMapper.mapRow(rs, commentIdx++));
+                                }
 
-                                currentCity.getComments().add(commentMapper.mapRow(rs, commentIdx++));
                             }
                             return workingCities;
                         }
@@ -78,6 +87,7 @@ public class CityDao implements ICityDao {
 
     /**
      * Provides city data insertion inside database.
+     *
      * @param city ready to be stored inside database
      * @return is city stored successfully to database
      */
@@ -107,6 +117,7 @@ public class CityDao implements ICityDao {
 
     /**
      * Search for city based on city id.
+     *
      * @param id (primary key) of city to be found
      * @return city in case there is valid result
      */
@@ -134,11 +145,13 @@ public class CityDao implements ICityDao {
 
     /**
      * Search for city based on city name.
+     *
      * @param name of city to be found
+     * @param numberOfComments number of comments to return. If 0 all comments are returned.
      * @return city in case there is valid result
      */
     @Override
-    public List<City> findByName(String name) {
+    public List<City> findByName(String name, int numberOfComments) {
         SimpleDriverDataSource ds = new SimpleDriverDataSource();
         ds.setDriver(new org.h2.Driver());
         ds.setUrl(configuration.DB_URL);
@@ -154,27 +167,33 @@ public class CityDao implements ICityDao {
         try {
             JdbcTemplate jtm = new JdbcTemplate(ds);
             cities = jtm.query(sql, new Object[]{name},
-            new ResultSetExtractor<List<City>>() {
-                public List<City> extractData(ResultSet rs) throws SQLException, DataAccessException {
-                    List<City> workingCities = new ArrayList<>();
-                    Long cityId = null;
-                    City currentCity = null;
-                    int cityIdx = 0;
-                    int commentIdx = 0;
-                    while (rs.next()) {
-                        // first row or when city changes
-                        if (currentCity == null || !cityId.equals(rs.getLong("id_city"))) {
-                            cityId = rs.getLong("id_city");
-                            currentCity = cityMapper.mapRow(rs, cityIdx++);
-                            commentIdx = 0;
-                            workingCities.add(currentCity);
+                    new ResultSetExtractor<List<City>>() {
+                        public List<City> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                            List<City> workingCities = new ArrayList<>();
+                            Long cityId = null;
+                            City currentCity = null;
+                            int cityIdx = 0;
+                            int commentIdx = 0;
+                            while (rs.next()) {
+                                // first row or when city changes
+                                if (currentCity == null || !cityId.equals(rs.getLong("id_city"))) {
+                                    cityId = rs.getLong("id_city");
+                                    currentCity = cityMapper.mapRow(rs, cityIdx++);
+                                    commentIdx = 0;
+                                    workingCities.add(currentCity);
+                                }
+                                if(numberOfComments>0) {
+                                    if (commentIdx < numberOfComments) {
+                                        currentCity.getComments().add(commentMapper.mapRow(rs, commentIdx++));
+                                    }
+                                }
+                                else{
+                                    currentCity.getComments().add(commentMapper.mapRow(rs, commentIdx++));
+                                }
+                            }
+                            return workingCities;
                         }
-
-                        currentCity.getComments().add(commentMapper.mapRow(rs, commentIdx++));
-                    }
-                    return workingCities;
-                }
-            });
+                    });
         } catch (DataAccessException dae) {
             lgr.log(Level.SEVERE, dae.getMessage(), dae);
         }
@@ -184,8 +203,9 @@ public class CityDao implements ICityDao {
 
     /**
      * Provides city data update inside database.
+     *
      * @param city new city data to be updated
-     * @param id of city to be updated
+     * @param id   of city to be updated
      * @return is city updated successfully to database
      */
     @Override
@@ -215,6 +235,7 @@ public class CityDao implements ICityDao {
 
     /**
      * Provides city and linked comments (parent-child) data deletion inside database.
+     *
      * @param id of city to be deleted
      * @return is city and corresponding comments deleted successfully to database
      */
