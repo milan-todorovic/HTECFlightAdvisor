@@ -6,6 +6,9 @@ import com.htec.model.City;
 import javax.inject.Inject;
 import java.util.List;
 
+/**
+ * Provided exposure for data access to city data. More details in corresponding DAO object.
+ */
 public class CityService implements ICityService{
 
     @Inject

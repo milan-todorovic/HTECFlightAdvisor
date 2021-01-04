@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Given a connected graph (graphical representation of all airports and flight routes),
- * find all routes between any two airports.
+ * finds all routes between any two airports. A DFS methode of graph search is performed here.
  */
 public class FindRoutes<T> {
 
@@ -16,7 +16,7 @@ public class FindRoutes<T> {
     private Configuration configuration = Configuration.instance();
 
     /**
-     * Constructor that takes flight routes represented through graph
+     * Constructor that takes flight routes represented through graph.
      */
     public FindRoutes(GraphOfRoutes<T> graph) {
         if (graph == null) {
@@ -25,7 +25,11 @@ public class FindRoutes<T> {
         this.graph = graph;
     }
 
-
+    /**
+     * Validation of source and destination node/airport
+     * @param source source node/airport
+     * @param destination destination node/airport
+     */
     private void validate(T source, T destination) {
 
         if (source == null) {
@@ -40,10 +44,11 @@ public class FindRoutes<T> {
     }
 
     /**
-     * Returns the list of routes, where route itself is a list of nodes/airports.
+     * Returns the list of routes, where route itself is a list of nodes/airports, based on DFS methode of graph search
+     * that is performed here with recursive search of routes/graph paths.
      *
-     * @param source      the source airport
-     * @param destination the destination airport
+     * @param source      the source node/airport
+     * @param destination the destination node/airport
      * @return List of all flight routes
      */
     public Map<List<T>, RootAttributes> getAllRoutsWithCost(T source, T destination) {

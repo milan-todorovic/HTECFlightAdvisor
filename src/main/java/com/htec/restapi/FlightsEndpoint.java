@@ -1,6 +1,5 @@
 package com.htec.restapi;
 
-import com.htec.model.City;
 import com.htec.model.FlightResult;
 import com.htec.service.FindFlightsService;
 
@@ -17,6 +16,14 @@ public class FlightsEndpoint {
     @Inject
     FindFlightsService findFlightsService;
 
+    /**
+     * Provides search for flights based on airport codes for source and destination airport. Depth or better say number
+     * of allowed transits between source airport until arrival to destination airport is controlled by <code>NUMBER_OF_TRANSITES</code>
+     * parameter inside properties file.
+     * @param source source airport
+     * @param destination destination airport
+     * @return JSON representation of all available flights in ascending order based on flight price.
+     */
     @RolesAllowed({"ADMIN","REGULAR"})
     @Path("/find-by-source-and-destination")
     @POST

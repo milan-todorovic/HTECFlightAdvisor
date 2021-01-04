@@ -6,6 +6,9 @@ import com.htec.model.User;
 import javax.inject.Inject;
 import java.util.List;
 
+/**
+ * Provided exposure for data access to user data. More details in corresponding DAO object.
+ */
 public class UserService implements IUserService{
 
     @Inject

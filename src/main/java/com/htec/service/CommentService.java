@@ -6,6 +6,9 @@ import com.htec.model.Comment;
 import javax.inject.Inject;
 import java.util.List;
 
+/**
+ * Provided exposure for data access to comment data. More details in corresponding DAO object.
+ */
 public class CommentService implements ICommentService {
 
     @Inject

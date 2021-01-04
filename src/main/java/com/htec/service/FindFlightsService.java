@@ -18,6 +18,16 @@ public class FindFlightsService implements IFindFlightsService {
     @Inject
     IRouteDao routeDao;
 
+    /**
+     * Performs search for all available flight routes between corresponding source and destination airports. Depth or better say number
+     * of allowed transits between source airport until arrival to destination airport is controlled by <code>NUMBER_OF_TRANSITES</code>
+     * parameter inside properties file. Initially all airports are added to graph representation of flight routes. After this
+     * in second phase all connection between airports is added with data about individual length of route and its cost.
+     * In the end results are sorted by implemented <code>SortByCost</code> comparator.
+     * @param source source airport where travel begins
+     * @param destination destination airport where travel ends
+     * @return ordered list of available flights, were order is ascending by cost of flight
+     */
     @Override
     public List<FlightResult> findBySourceAndDestination(String source, String destination) {
         GraphOfRoutes<String> graphOfRoutes = new GraphOfRoutes<String>();
