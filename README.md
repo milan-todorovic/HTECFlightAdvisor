@@ -24,4 +24,4 @@ all comments if value is set to 0. Otherwise, it will return specified number of
 
 At preset moment there are some missing features:
 * feature that will enable an administrator to import airports and routes file. This
-is current done at request level.
+is currently done at request level.
