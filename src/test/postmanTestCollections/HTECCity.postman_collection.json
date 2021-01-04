@@ -7,6 +7,54 @@
 	"item": [
 		{
 			"name": "getCities",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "numberOfComments",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/get-cities",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"cities",
+						"get-cities"
+					]
+				},
+				"description": "Get all cities."
+			},
+			"response": []
+		},
+		{
+			"name": "findCity",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -32,51 +80,12 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "",
-							"value": "",
-							"type": "text",
-							"disabled": true
+							"key": "numberOfComments",
+							"value": "1",
+							"type": "text"
 						}
 					]
 				},
-				"url": {
-					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/get-cities",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"HTECFlightAdvisor_war",
-						"flightadvisor",
-						"cities",
-						"get-cities"
-					]
-				},
-				"description": "Get all cities."
-			},
-			"response": []
-		},
-		{
-			"name": "findCity",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
 				"url": {
 					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/find-city/1",
 					"protocol": "http",
@@ -125,10 +134,9 @@
 							"type": "text"
 						},
 						{
-							"key": "",
-							"value": "",
-							"type": "text",
-							"disabled": true
+							"key": "numberOfComments",
+							"value": "2",
+							"type": "text"
 						}
 					]
 				},
@@ -175,12 +183,12 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "Sochi",
+							"value": "New York",
 							"type": "text"
 						},
 						{
 							"key": "country",
-							"value": "Russia",
+							"value": "USA",
 							"type": "text"
 						},
 						{
@@ -233,7 +241,7 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "Portland",
+							"value": "Los Angeles",
 							"type": "text"
 						},
 						{
@@ -243,13 +251,13 @@
 						},
 						{
 							"key": "description",
-							"value": "Small city",
+							"value": "Movie industry.",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/update-city/2",
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/update-city/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -260,7 +268,7 @@
 						"flightadvisor",
 						"cities",
 						"update-city",
-						"2"
+						"4"
 					]
 				},
 				"description": "Update existing city."
@@ -288,7 +296,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/delete-city/3",
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/delete-city/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -299,7 +307,7 @@
 						"flightadvisor",
 						"cities",
 						"delete-city",
-						"3"
+						"5"
 					]
 				},
 				"description": "Delete existing city."

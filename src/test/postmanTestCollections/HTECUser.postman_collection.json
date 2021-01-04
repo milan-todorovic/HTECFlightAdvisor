@@ -107,22 +107,22 @@
 					"urlencoded": [
 						{
 							"key": "firstname",
-							"value": "Marko",
+							"value": "Goran",
 							"type": "text"
 						},
 						{
 							"key": "lastname",
-							"value": "Markovic",
+							"value": "Nikolic",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "mmarko",
+							"value": "goran",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "mmarko",
+							"value": "goran",
 							"type": "text"
 						}
 					]
@@ -170,22 +170,22 @@
 					"urlencoded": [
 						{
 							"key": "firstname",
-							"value": "Nikolo",
+							"value": "Goran",
 							"type": "text"
 						},
 						{
 							"key": "lastname",
-							"value": "Markovic",
+							"value": "Trivic",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "mmarko1",
+							"value": "goran",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "Mmarko2",
+							"value": "goran1",
 							"type": "text"
 						}
 					]
@@ -280,7 +280,7 @@
 					"urlencoded": [
 						{
 							"key": "role",
-							"value": "REGULAR",
+							"value": "ADMIN",
 							"type": "text"
 						}
 					]
@@ -325,7 +325,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/register/3",
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/register/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -336,7 +336,7 @@
 						"flightadvisor",
 						"users",
 						"register",
-						"3"
+						"2"
 					]
 				},
 				"description": "Register a user."
