@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "2c6ae5f2-9053-4cb3-9099-029e7c202f3f",
+		"name": "HTECUser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getUsers",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/get-users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"users",
+						"get-users"
+					]
+				},
+				"description": "Get all users."
+			},
+			"response": []
+		},
+		{
+			"name": "findUser",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/find-user/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"users",
+						"find-user",
+						"1"
+					]
+				},
+				"description": "Find user based on id."
+			},
+			"response": []
+		},
+		{
+			"name": "saveUser",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Marko",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Markovic",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "mmarko",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mmarko",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/save-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"users",
+						"save-user"
+					]
+				},
+				"description": "Save new user."
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Nikolo",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Markovic",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "mmarko1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Mmarko2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/update-user/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"users",
+						"update-user",
+						"2"
+					]
+				},
+				"description": "Update existing user."
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/delete-user/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"users",
+						"delete-user",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "Delete existing user."
+			},
+			"response": []
+		},
+		{
+			"name": "updateRole",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "role",
+							"value": "REGULAR",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/set-role/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"users",
+						"set-role",
+						"2"
+					]
+				},
+				"description": "Update a role of a user."
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/users/register/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"users",
+						"register",
+						"3"
+					]
+				},
+				"description": "Register a user."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

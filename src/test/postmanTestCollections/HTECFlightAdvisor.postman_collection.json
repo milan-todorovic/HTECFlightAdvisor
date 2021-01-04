@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "885c0cbb-a0ab-478d-8b2c-8c3af351496c",
+		"name": "HTECFlightAdvisor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findFlight",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "source",
+							"value": "AER",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "KZN",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/flights/find-by-source-and-destination",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"flights",
+						"find-by-source-and-destination"
+					]
+				},
+				"description": "Find flight advice."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

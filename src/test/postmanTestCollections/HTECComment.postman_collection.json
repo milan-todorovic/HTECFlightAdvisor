@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "07454cf2-17b7-4762-9665-d1c5cb47e2a8",
+		"name": "HTECComment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getComments",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/comments/get-comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"comments",
+						"get-comments"
+					]
+				},
+				"description": "Get all comments."
+			},
+			"response": []
+		},
+		{
+			"name": "findComments",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/comments/find-comment/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"comments",
+						"find-comment",
+						"1"
+					]
+				},
+				"description": "Find comments based on id."
+			},
+			"response": []
+		},
+		{
+			"name": "saveComment",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "comment",
+							"value": "This is also big city in World",
+							"type": "text"
+						},
+						{
+							"key": "cityid",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/comments/save-comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"comments",
+						"save-comment"
+					]
+				},
+				"description": "Save new comment."
+			},
+			"response": []
+		},
+		{
+			"name": "updateComment",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "comment",
+							"value": "This is not that small city.",
+							"type": "text"
+						},
+						{
+							"key": "cityid",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/comments/update-comment/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"comments",
+						"update-comment",
+						"2"
+					]
+				},
+				"description": "Update existing comment."
+			},
+			"response": []
+		},
+		{
+			"name": "deleteComment",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/comments/delete-comment/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"comments",
+						"delete-comment",
+						"2"
+					]
+				},
+				"description": "Delete existing comment."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

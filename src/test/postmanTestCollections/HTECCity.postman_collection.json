@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "b64f0be9-7f4e-4538-be36-c74bfc8ec01f",
+		"name": "HTECCity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getCities",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/get-cities",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"cities",
+						"get-cities"
+					]
+				},
+				"description": "Get all cities."
+			},
+			"response": []
+		},
+		{
+			"name": "findCity",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/find-city/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"cities",
+						"find-city",
+						"1"
+					]
+				},
+				"description": "Find city based on id."
+			},
+			"response": []
+		},
+		{
+			"name": "findCityByName",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "New York",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/find-city-by-name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"cities",
+						"find-city-by-name"
+					]
+				},
+				"description": "Find city based on name."
+			},
+			"response": []
+		},
+		{
+			"name": "saveCity",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Sochi",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Russia",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "This is big city.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/save-city",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"cities",
+						"save-city"
+					]
+				},
+				"description": "Save new city."
+			},
+			"response": []
+		},
+		{
+			"name": "updateCity",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Portland",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Unated States",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Small city",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/update-city/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"cities",
+						"update-city",
+						"2"
+					]
+				},
+				"description": "Update existing city."
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCity",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HTECFlightAdvisor_war/flightadvisor/cities/delete-city/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HTECFlightAdvisor_war",
+						"flightadvisor",
+						"cities",
+						"delete-city",
+						"3"
+					]
+				},
+				"description": "Delete existing city."
+			},
+			"response": []
+		}
+	]
+}
