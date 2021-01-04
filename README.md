@@ -21,7 +21,7 @@ provided with Rest Easy.
 
 At preset moment there are some missing features:
 * feature that will enable an administrator to import airports and routes file. This
-is current done ad request level.
+is current done at request level.
   
 * feature that will return only x specified comment is missing
 * authentication is based on a username and password at present moment. There is no 
